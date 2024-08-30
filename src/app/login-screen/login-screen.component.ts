@@ -7,7 +7,6 @@ import {PasswordModule} from "primeng/password";
 import {LoginService} from "./login-service.service";
 import { ToastModule } from 'primeng/toast';
 import {MessageService} from "primeng/api";
-import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-login-screen',
@@ -31,26 +30,25 @@ export class LoginScreenComponent {
   password : string = "";
   validLogin : boolean  = false;
 
-  onUserNameChange(){
-    console.log(this.userName);
-  }
-
-  onPasswordChange(){
-    console.log(this.password);
-  }
-
   onLogin()
   {console.log("hi");
     this.loginService.postLogin(this.userName, this.password)
       .subscribe( value => {
         this.validLogin = value;
         if(this.validLogin)
-          this.triggerToast();
+          this.triggerSuccess();
+        else
+            this.triggerError();
       });
   }
 
-  triggerToast(){
+  triggerSuccess(){
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+  }
+
+  triggerError(){
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
+
   }
 
 }
