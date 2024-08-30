@@ -1,0 +1,16 @@
+<ng-container >
+  <div class="login-container">
+    <h1>Login</h1>
+    <p-floatLabel>
+      <input type="text" id="userName" (change)="onUserNameChange()"  pInputText  [(ngModel)]="userName"/>
+      <label for="userName">user name</label>
+    </p-floatLabel>
+    <p-floatLabel id="passwordFields">
+      <input type="text" id="password" (change)="onPasswordChange()" pInputText [(ngModel)]="password" />
+      <label for="password"  >password</label>
+    </p-floatLabel>
+    <p-toast />
+    <p-button label="Login" (click)="onLogin()" />
+  </div>
+
+</ng-container>
